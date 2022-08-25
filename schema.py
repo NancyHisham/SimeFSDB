@@ -23,10 +23,9 @@ def parse_args():
 
 
 def creat(schema):
-    
     xs = [None] * 3
     i=0
-    with open("C:\Users\nancy\OneDrive\Desktop\project check-in\SimeFSDB\SimeFSDB\database.py",'r') as file: 
+    with open('database.py','r') as file:
         say1 = 'database_name'
         say2 = 'name'
         for line in file:
