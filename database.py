@@ -18,7 +18,7 @@
             " Consistency " : " Strong "
         },
         {
-            " name " : " PlaneId ",
+            " name " : " Plane ",
             " columns " : [" PlaneId ", " NumberOfEmptySeats ", " NumberOfOccuppiedSeats ", " AllowedLuggage "],
             " primary_key "  : " PlaneId ",
             " Consistency " : " Eventual "
