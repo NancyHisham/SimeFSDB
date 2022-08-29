@@ -1,16 +1,23 @@
 import unittest
+import json
+import argparse
+import sys
+import os
 
 class databaseTest(unittest.TestCase):
     
     def test1(self):
-        self.assertEqual(first, second)
+        with open("database.json", 'r') as database:
+            data = json.load(database)
+            root_path = os.path.realpath(data["database_name"])
+            if(not os.path.exists(root_path)):
+                self.assertEqual(False)
+            for x in data['Tables']:
+                path = os.path.join(root_path, x['name'])
+                if(not os.path.exists(path)):
+                    self.assertTrue(False)
+        self.assertTrue(True)
         
-    def test2(self):
-        self.assertEqual(first, second)
-        
-    def test3(self):
-        self.assertEqual(first, second)
-        
-        
+     
 if __name__ == '__main__':
     unittest.main()
