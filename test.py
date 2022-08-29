@@ -11,7 +11,7 @@ class databaseTest(unittest.TestCase):
             data = json.load(database)
             root_path = os.path.realpath(data["database_name"])
             if(not os.path.exists(root_path)):
-                self.assertEqual(False)
+                self.assertTrue(False)
             for x in data['Tables']:
                 path = os.path.join(root_path, x['name'])
                 if(not os.path.exists(path)):
