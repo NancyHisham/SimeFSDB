@@ -1,22 +1,10 @@
-
 from CreateCommand import CreateCommand
-from DeleteCommand import DeleteCommand
-from GetCommand import GetCommand
 from ParseInput import parse_args
-from SetCommand import SetCommand
-
+args= parse_args()
 class CommandFactory:
-    args= parse_args()
     @staticmethod
-    def build_command(args):
-        command_type=args.command
+    def build_command(tt):
+        command_type=tt
         if command_type == "create":
-            #print("Create fnn")
-            return CreateCommand(args.schema).excute()
-        elif command_type == "delete":
-            return DeleteCommand(args.schema)
-        elif command_type == "get":
-            return GetCommand(args.schema)
-        elif command_type == "set":
-            return SetCommand(args.schema)
-
+            return CreateCommand().excute()
+#CommandFactory().build_command(args)
