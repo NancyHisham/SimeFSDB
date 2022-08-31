@@ -1,9 +1,9 @@
 import json
-from msilib import schema
 import os
 # provides functions for creating, removing a directory (folder), fetching its contents, changing and identifying the current directory
 from ICommand import ICommand
 from Keys import Keys
+
 class CreateCommand(ICommand):
     def excute(schema):
         with open('schema.json','r') as schema:
