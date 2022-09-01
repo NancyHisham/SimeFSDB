@@ -5,8 +5,9 @@ class CommandFactory:
     args= parse_args()
     @staticmethod
     def create_command(args):
-    def build_command(args):
-        command_type=args
+        command_type = args
+        command_type = command_type.lower()
         if command_type == "create":
-            return CreateCommand().excute()
+            CreateCommand().execute()
+            
 #CommandFactory().build_command(args)
