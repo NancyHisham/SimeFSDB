@@ -1,4 +1,6 @@
-class Keys:
+from abc import ABCMeta
+
+class keys(metaclass=ABCMeta):
     schema = "schema"
     DB_Name = "database_name"
     tables  = "Tables"

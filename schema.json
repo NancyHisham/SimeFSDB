@@ -1,7 +1,7 @@
 {
     "database_name" : "Check-in" ,
 
-    "Tables" : [ 
+    "Tables" : [
         {
             "name" : "Reservations",
             "columns" : ["First_name", "Last_name", "Gender", "Age", "Nationality", 
