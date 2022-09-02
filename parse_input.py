@@ -1,17 +1,13 @@
 import argparse
-from email import parser
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Auto Sizer agent")
     parser.add_argument(
-
-        "-cmd",
-        "--command",
+        "command",
         type=str,
         help= "Command : Create , Get , Set , Delete",
     )
     parser.add_argument(
-
         "-pk",
         "--primary-key",
         type=str,
@@ -30,13 +26,13 @@ def parse_args():
         help="The Database name",
     )
     parser.add_argument(
-        "-t",
+        "-tb",
         "--table",
         type=str,
         help="The Table name",
     )
     parser.add_argument(
-        "-v",
+        "-val",
         "--value",
         type=str,
         help="The Value to add",

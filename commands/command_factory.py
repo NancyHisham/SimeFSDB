@@ -2,11 +2,9 @@ from commands.create_command import CreateCommand
 from parse_input import parse_args
 
 class CommandFactory:
-    args = parse_args()
-    
-    def build_command(args):
-        command = args.command
-        if (command == "create"):
+    def create_command(args):
+        cmnd = args.command.lower()
+        if (cmnd == "create"):
             return CreateCommand()
         
-#CommandFactory.build_command(command_type)
+#CommandFactory.create_command(command_type)
