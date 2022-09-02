@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractstaticmethod
 # this method is used for creating the ICommand as an abstract class
 
-class abstract_command(metaclass=ABCMeta):
+class AbstractCommand(metaclass=ABCMeta):
     
     @abstractstaticmethod
     def excute(self):

@@ -1,9 +1,9 @@
 import json
 import os
 from keys import keys
-from commands.abstract_command import abstract_command
+from commands.abstract_command import AbstractCommand
 
-class CreateCommand(abstract_command):
+class CreateCommand(AbstractCommand):
 
     def __init__(self):
         with open('schema.json','r') as schema:

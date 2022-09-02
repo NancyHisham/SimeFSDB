@@ -3,7 +3,7 @@ import argparse
 def parse_args():
     parser = argparse.ArgumentParser(description="Auto Sizer agent")
     parser.add_argument(
-        "command",
+        "-command",
         type=str,
         help= "Command : Create , Get , Set , Delete",
     )
