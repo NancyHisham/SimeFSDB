@@ -3,7 +3,11 @@ import os
 from keys import keys
 from commands.abstract_command import ICommand
 
+<<<<<<< Updated upstream
 class CreateCommand(ICommand):
+=======
+class CreateCommand(ICommand): 
+>>>>>>> Stashed changes
 
     def __init__(self):
         with open('schema.json','r') as schema:

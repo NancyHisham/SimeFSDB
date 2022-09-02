@@ -10,7 +10,11 @@ def parse_args():
         type=str,
         help= "Command : Create , Get , Set , Delete",
     )
+<<<<<<< Updated upstream
     parser.add_argument(
+=======
+    parser.add_argument( 
+>>>>>>> Stashed changes
 
         "-pk",
         "--primary-key",
