@@ -1,11 +1,11 @@
-from abc import ABCMeta
+from abc import ABC
 
-class keys(metaclass=ABCMeta):
-    schema = "schema"
-    DB_Name = "database_name"
-    tables  = "Tables"
-    name = "name"
-    columns = "columns"
-    pk = "primary_key"
-    idx_key = "Index_keys"
-    consistency = "Consistency"
+class keys(ABC):
+    SCHEMA = "schema"
+    DB_NAME = "database_name"
+    TABLES  = "Tables"
+    NAME = "name"
+    COLUMNS = "columns"
+    PK = "primary_key"
+    IDX_KEY = "Index_keys"
+    CONSISTENCY = "Consistency"

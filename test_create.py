@@ -23,7 +23,7 @@ class TestCreateCommand(unittest.TestCase):
         self.assertRaises(Exception, CreateCommand.excute(None,data))
 
     def test_create_database(self):
-        db_path = os.path.abspath(data[keys.DB_Name])
+        db_path = os.path.abspath(data[keys.DB_NAME])
         self.assertEqual(os.path.exists(db_path), True)
 
     def test_wrong_DB_Name(self):
@@ -40,8 +40,8 @@ class TestCreateCommand(unittest.TestCase):
             self.assertEqual(os.path.exists(db_path), True)
 
     def test_create_tables(self):
-        for table in data[keys().tables]:
-            table_path = os.path.join(parent_dir , data[keys().DB_Name] , table[keys().name])
+        for table in data[keys.TABLES]:
+            table_path = os.path.join(parent_dir , data[keys.DB_NAME] , table[keys.NAME])
             self.assertEqual(os.path.exists(table_path), True)
 
     def test_wrong_table_name(self):
