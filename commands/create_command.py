@@ -14,7 +14,8 @@ class CreateCommand(AbstractCommand):
             return StatusOfCode.SchemaNotFound
 
         try:  
-            self.data = json.load(open(schema_path, "r"))
+            with open(schema_path, "r") as schema:
+                self.data = json.load(schema)
         except:
             return StatusOfCode.ErrorLoadingJsonFile
 
