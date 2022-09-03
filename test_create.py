@@ -3,6 +3,8 @@ import json
 import os
 from keys import keys
 from commands.create_command import CreateCommand
+from parse_input import parse_args
+
 parent_dir = os. getcwd()
 #print( "Current working dir : %s" % os.getcwd())
 schema = "schema.json"
@@ -13,20 +15,22 @@ class TestCreateCommand(unittest.TestCase):
 
     def test_wrong_schema_name(self):
         wrong_schema = "eskima.json"
-        self.assertRaises(Exception, CreateCommand.excute(wrong_schema,data))
+        self.assertRaises(Exception, CreateCommand(wrong_schema))
         wrong_schema = "schima.json"
-        self.assertRaises(Exception, CreateCommand.excute(wrong_schema,data))
+        self.assertRaises(Exception, CreateCommand(wrong_schema))
         wrong_schema = "skima.json"
-        self.assertRaises(Exception, CreateCommand.excute(wrong_schema,data))
+        self.assertRaises(Exception, CreateCommand(wrong_schema))
 
     def test_null_input(self):
-        self.assertRaises(Exception, CreateCommand.excute(None,data))
-
+        self.assertRaises(Exception, CreateCommand(None))
+    
     def test_create_database(self):
+        CreateCommand("schema.json")
         db_path = os.path.abspath(data[keys.DB_NAME])
         self.assertEqual(os.path.exists(db_path), True)
 
     def test_wrong_DB_Name(self):
+        CreateCommand("schema.json")
         DB_Name = "Check"
         table = "FlightInfo"
         t_path = os.path.join(parent_dir, DB_Name, table)
@@ -36,19 +40,25 @@ class TestCreateCommand(unittest.TestCase):
         DB_Name = "Check-in"
         db_path = os.path.join(parent_dir, DB_Name)
         for i in range(3): # this is an arbitratry number so that we can call the function more than one time 
-            CreateCommand().excute(data)
+            CreateCommand("schema.json")
             self.assertEqual(os.path.exists(db_path), True)
 
     def test_create_tables(self):
+        CreateCommand("schema.json")
         for table in data[keys.TABLES]:
             table_path = os.path.join(parent_dir , data[keys.DB_NAME] , table[keys.NAME])
             self.assertEqual(os.path.exists(table_path), True)
 
     def test_wrong_table_name(self):
+        CreateCommand("schema.json")
         DB_Name = "Check-in"
         table = "FlightDetails"
         t_path = os.path.join(parent_dir, DB_Name, table)
         self.assertEqual(os.path.exists(t_path), False)
+
+    
 if __name__ == '__main__':
-    CreateCommand().excute(data)
+    args = parse_args()
+    CreateCommand(args.schema)
+
     unittest.main()
