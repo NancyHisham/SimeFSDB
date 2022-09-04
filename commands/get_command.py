@@ -2,15 +2,16 @@ import json
 import os
 
 
-def get_command(database, table, primary_key, parameter):
+def get_command(database, table, primary_key, parameters=None):
     path = os.getcwd() + "\\" + database + "\\" + table + "\\" + primary_key + ".json"
     if(not os.path.exists(path)):
-        return "Error, does't exist"
+        return Exception()
     data = json.load(open(path, 'r'))
-    if not (parameter in data):
-        return "Error, key doesn't exist"
-    return data[parameter]
-    
-    
-
-print(get_command("Check-in", "FlightInfo", "abc", "PlaneId"))
+    if(parameters == None):
+        return data
+    res = {}
+    for i in range(len(parameters)):
+        if not (parameters[i] in data):
+            return Exception()
+        res[parameters[i]] = data[parameters[i]]
+    return res
