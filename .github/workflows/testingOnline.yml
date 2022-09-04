@@ -1,7 +1,14 @@
+
 name: Run Python Tests
 on:
-  -push
-  -pull_request
+  push:
+    branches:
+      - Implementing-the-create-function
+      - main
+  pull_request:
+    branches:
+      - Implementing-the-create-function
+      - main
 
 jobs:
   build:
