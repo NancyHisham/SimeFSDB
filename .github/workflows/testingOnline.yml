@@ -1,15 +1,6 @@
 
 name: Run Python Tests
-on:
-  push:
-    branches:
-      - Implementing-the-create-function
-      - main
-  pull_request:
-    branches:
-      - Implementing-the-create-function
-      - main
-
+on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
