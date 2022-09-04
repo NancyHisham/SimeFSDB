@@ -13,7 +13,7 @@ def createKey(database, table, primary_key):
     json_columns = {}
     for parameter in columnsList:
         json_columns[parameter] = ""
-    path = os.getcwd() + "\ " + database + "\ " + table
+    path = os.getcwd() + "\\" + database + "\\" + table
     if(not os.path.exists(path)):
         return "Error"
     path = path + "\\" + primary_key + ".json"
