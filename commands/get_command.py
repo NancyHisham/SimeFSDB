@@ -3,10 +3,13 @@ import os
 
 
 def getCommand(database, table, primary_key, parameters=None):
+    if(database == None) or (table == None) or (primary_key == None):
+        return False
     path = os.getcwd() + "\\" + database + "\\" + table + "\\" + primary_key + ".json"
     if(not os.path.exists(path)):
         return False
-    data = json.load(open(path, 'r'))
+    with open(path, 'r') as file:
+        data = json.load(file)
     if(parameters == None):
         return data
     res = {}
