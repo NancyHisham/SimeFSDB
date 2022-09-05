@@ -2,11 +2,13 @@ import json
 import os
 
 
-def delete_command(database, table, primary_key):
-    path = os.getcwd() + "\\" + database + "\\" + table + "\\" + primary_key + ".json"
+def deleteCommand(database, table, primary_key):
+    if(database == None) or (table == None) or (primary_key == None):
+        return False
+    path = os.getcwd() + "\\" + database + "\\" + table + "\\" + str(primary_key) + ".json"
     if(not os.path.exists(path)):
-        return Exception()
+        return False
     os.remove(path)
-    return 0
+    return True
     
     

@@ -1,40 +1,35 @@
 import unittest   # The test framework
 import json
 import os
+from commands import delete_command
 from commands import createKey_command
 
 
 class TestAPICommand(unittest.TestCase):
 
-    def test_createKey(self):
+    def test_delete(self):
         database = "Check-in"
         table = "Reservations"
-        primary_key = "test_createKey"
+        primary_key = "test_delete"
         createKey_command.createKey(database , table, primary_key)
         path = os.getcwd() + "\\" + database + "\\" + table + "\\" + primary_key + ".json"
         self.assertTrue(os.path.exists(path))
+        delete_command.deleteCommand(database, table, primary_key)
+        self.assertFalse(os.path.exists(path))
+                    
+                    
+                
+                
         
-        with open('schema.json','r') as file:
-            schema = json.load(file)
-        columnsList = []
-        for item in schema['Tables']:
-            if item['name'] == table:
-                columnsList = item["columns"]
-                break
-        with open(path) as file:
-            file = json.load(file)
-            i = 0
-            for key in file:
-                self.assertEqual(key, columnsList[i])
-                i += 1
-  
+          
     def test_null_input(self):
-        self.assertEqual(False, createKey_command.createKey(None , None, None))
+        self.assertEqual(False, delete_command.deleteCommand(None, None, None))
 
     def test_wrong_DB_Name(self):
         DB_Name = "Check"
         table = "FlightInfo"
-        self.assertEqual(False, createKey_command.createKey(DB_Name , table, "testWrongDB"))
+        primary_key = "test_wrong_DB_Name"
+        self.assertEqual(False, delete_command.deleteCommand(DB_Name, table, primary_key))
 
     def test_createKey_multiple_times(self):
         database = "Check-in"
@@ -43,11 +38,16 @@ class TestAPICommand(unittest.TestCase):
         for i in range(3): # this is an arbitratry number so that we can call the function more than one time 
             createKey_command.createKey(database , table, i)
             self.assertEqual(os.path.exists(path + "\\" + str(i) + ".json"), True)
+        
+        for i in range(3): 
+            delete_command.deleteCommand(database , table, i)
+            self.assertEqual(os.path.exists(path + "\\" + str(i) + ".json"), False)
 
     def test_wrong_table_name(self):
         DB_Name = "Check-in"
         table = "FlightDetails"
-        self.assertEqual(False, createKey_command.createKey(DB_Name , table, "testWrongTable"))
+        primary_key = "test_wrong_table_name"
+        self.assertEqual(False, delete_command.deleteCommand(DB_Name, table, primary_key))
 
     
 if __name__ == '__main__':
