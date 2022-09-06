@@ -3,8 +3,9 @@ import os
 
 
 def getCommand(database, table, primary_key, parameters=None):
-    if(database == None) or (table == None) or (primary_key == None):
-        return False
+    database = str(database)
+    table = str
+    
     path = os.getcwd() + "\\" + database + "\\" + table + "\\" + primary_key + ".json"
     if(not os.path.exists(path)):
         return False
