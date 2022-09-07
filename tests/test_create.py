@@ -5,9 +5,7 @@ sys.path.append(root_dir)
 from source.output.exceptions import * 
 from source.commands.keys import keys
 from source.commands.create_command import CreateCommand
-from source.input_adaptors.parse_input import parse_args
 schema_path = os.path.join(root_dir, "tests" , "schema.json")
-
 parent_dir = os. getcwd()
 
 with open(schema_path,'r') as fileData:

@@ -9,14 +9,12 @@ from input_adaptors.parse_input import parse_args
 if __name__ == "__main__":
    try:
       args = parse_args()
-      command = CommandFactory().create_command(args)
+      command = CommandFactory(args).create_command()
       result = command.excute()
-      output_obj = OutputMessage(command_name=args.command , result=result)
+      output_obj = OutputMessage(command_name=args.command , result= result , exception = None)
    except Exception as e:
-      output_obj = OutputMessage(command_name = None, result = None , exception=e)
-   print("#####################")
-   print(type(output_obj))
-   print("#####################")
+      output_obj = OutputMessage(command_name = args.command , result = None , exception = e)
+
    print(json.dumps(output_obj.__dict__))
 
 

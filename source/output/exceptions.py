@@ -8,6 +8,11 @@ class NoCommandEntered(Exception):
         self.status_code = StatusOfCode.NoCommandEntered.name
         super().__init__(message)
 
+class NoParameterError(Exception):
+    def __init__(self, message):
+        self.status_code = StatusOfCode.NoCommandEntered.name
+        super().__init__(message)
+
 class WrongCommandError(Exception):
     def __init__(self, message):
         self.status_code = StatusOfCode.WrongCommandError.name
