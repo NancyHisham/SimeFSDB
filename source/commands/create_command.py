@@ -31,15 +31,15 @@ class CreateCommand(AbstractCommand):
     
     def excute(self):    
         self.__create_main_directory()
+        root_path = os.path.realpath(self.data[keys.DB_NAME])
+        self.__create_table_folders(root_path)
 
     def __create_main_directory(self):
         if(not os.path.exists(self.data[keys.DB_NAME])):
             os.mkdir(self.data[keys.DB_NAME]) 
-        root_path = os.path.realpath(self.data[keys.DB_NAME])
-        self.__create_table_folder(root_path)
+        
 
-
-    def __create_table_folder(self , root_path):
+    def __create_table_folders(self , root_path):
         if not keys.TABLES in self.data:
             return
         for tablename in self.data[keys.TABLES]:
