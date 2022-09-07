@@ -15,12 +15,12 @@ class CreateCommand(AbstractCommand):
         parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
         if (self.schema_path is None or self.schema_path == "" or self.schema_path == " "):
             raise  NoParameterError("The schema path was not entered")
-        new_path =os.path.join(parent_dir.replace("commands",'').replace("source", ''),'tests', self.schema_path)
-        if(not os.path.exists(new_path)):
+        new_schema_path = os.path.join(keys.SCHEMA , self.schema_path)
+        if(not os.path.exists(new_schema_path)):
             raise SchemaNotFound("The schema path you entered is not found")
 
         try:  
-            with open(new_path, "r") as schema:
+            with open(new_schema_path, "r") as schema:
                 self.data = json.load(schema)
         except:
             raise ErrorLoadingJsonFile("The json file could not be loaded")
