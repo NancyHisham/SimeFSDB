@@ -13,7 +13,10 @@ class CommandFactory:
 
     @staticmethod
     def validate(self):
-        if self.args.command.lower() not in self.available_commands:
+        command_type = self.args.command.lower() if self.args.command is not None else None
+        if command_type is None:
+            raise NoCommandEntered("A command must be entered")
+        elif command_type not in self.available_commands:
             raise WrongCommandError("Wrong command entered")
 
     def create_command(self):
