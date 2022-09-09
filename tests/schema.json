@@ -1,0 +1,33 @@
+{
+     "database_name" : "Check-in" ,
+    "Tables" : [
+        {
+            "name" : "Reservations",
+            "columns" : ["First_name", "Last_name", "Gender", "Age", "Nationality", 
+            "Email", "PhoneNumber", "PassportId", "FlightId", "SeatNumber", "luggageWeight"],
+            "primary_key"  : "ReservationId",
+            "Index_keys" : ["First_name", "Last_name"],
+            "Consistency" : "Eventual"
+        },
+        {
+            "name" : "FlightInfo",
+            "columns" : ["PlaneId", "AirLineName", "From", "To", "DepartureTime", "ArrivalTime"],
+            "primary_key"  : "FlightId",
+            "Index_keys" : ["From", "to", "DepartureTime", "ArrivalTime"],
+            "Consistency" : "Strong"
+        },
+        {
+            "name" : "PlaneDetails",
+            "columns" : [ "SeatsDistribution", "OccupiedSeats"],
+            "primary_key"  : "PlaneId",
+            "Consistency" : "Eventual"
+        },
+        {
+            "name" : "FlightSeats",
+            "columns" : [ "ReservationId"],
+            "primary_key"  : "FlightId_SeatNumber",
+            "Consistency" : "Eventual"
+        }
+    
+    ]
+} 
