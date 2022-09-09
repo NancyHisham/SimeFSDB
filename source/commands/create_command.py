@@ -9,28 +9,29 @@ from output.exceptions import *
 class CreateCommand(AbstractCommand):
 
     def __init__(self , schema_path):
-        self.__validate(schema_path)  
+        self.data = CreateCommand.__validate_and_get_schema(schema_path)  
            
-    
-    def __validate(self,schema_path):
+    @staticmethod
+    def __validate_and_get_schema(schema_path):
         if (schema_path is None or schema_path == "" or schema_path == " "):
             raise  NoParameterError("The schema path was not entered")
         new_schema_path = os.path.join(keys.SCHEMA , schema_path) 
         if(not os.path.exists(new_schema_path)):
             raise SchemaNotFound("The schema path you entered is not found")
-        
-        return (self.__load_data(new_schema_path))
+        return (CreateCommand.__load_data(new_schema_path))
 
-    def __load_data(self ,new_schema_path):
+    @staticmethod
+    def __load_data(new_schema_path):
         try:  
             with open(new_schema_path, "r") as schema:
-                self.data = json.load(schema)
+                data =  json.load(schema)
         except:
             raise ErrorLoadingJsonFile("The json file could not be loaded")
 
-        if not keys.DB_NAME in self.data:
-            return DatabaseNameMissing("The database name is missing in your .json file")
-    
+        if not keys.DB_NAME in data:
+            raise DatabaseNameMissing("The database name is missing in your .json file")
+        return data
+
     def excute(self):    
         self.__create_main_directory()
         root_path = os.path.realpath(self.data[keys.DB_NAME])
