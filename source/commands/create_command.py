@@ -5,15 +5,14 @@ from commands.abstract_command import AbstractCommand
 from commands.keys import *
 from output.exceptions import *
 from model.table import *
-from keys import *
-
-
+from keys import * 
+ 
 
 class CreateCommand(AbstractCommand):
 
     def __init__(self , schema_path):
         self.data = CreateCommand.__validate_and_get_schema(schema_path)  
-        
+
     @staticmethod
     def __validate_and_get_schema(schema_path):
         if (schema_path is None or schema_path == "" or schema_path == " "):
