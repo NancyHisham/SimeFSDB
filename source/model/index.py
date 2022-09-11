@@ -1,6 +1,6 @@
 from commands.keys import *
 import json
-
+ 
 class Index:
     def index(path,tablename):
         indices = {"indices": []}
@@ -8,4 +8,4 @@ class Index:
             name_value = {"name": index, "values": []}
             indices["indices"].append(name_value)
         with open(path, 'w') as file:
-            json.dump(indices, file)
+            json.dump(indices, file) 
