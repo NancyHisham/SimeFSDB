@@ -2,7 +2,7 @@ import unittest   # The test framework
 import json , sys , os
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(root_dir)
-from source.output.exceptions import * 
+from source.output.exceptions import *  
 from source.commands.keys import keys
 from source.commands.create_command import CreateCommand
 schema_path = os.path.join(root_dir, "tests" , "schema.json")

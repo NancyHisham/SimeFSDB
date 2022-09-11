@@ -5,9 +5,8 @@ from commands.abstract_command import AbstractCommand
 from commands.keys import *
 from output.exceptions import *
 from model.table import *
-from keys import * 
+from commands.keys import * 
  
-
 class CreateCommand(AbstractCommand):
 
     def __init__(self , schema_path):

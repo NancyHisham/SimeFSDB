@@ -1,7 +1,7 @@
 from commands.keys import *
 import json
  
-class Index:
+class Index: 
     def index(path,tablename):
         indices = {"indices": []}
         for index in tablename[keys.IDX_KEY]:
