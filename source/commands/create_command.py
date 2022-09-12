@@ -7,7 +7,6 @@ from output.exceptions import *
 from model.table import *
 from commands.keys import * 
  
-
 class CreateCommand(AbstractCommand):
 
     def __init__(self , schema_path):
