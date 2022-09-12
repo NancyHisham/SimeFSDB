@@ -49,6 +49,6 @@ class CreateCommand(AbstractCommand):
         for tablename in self.data[keys.TABLES]:
             path = os.path.join(root_path, tablename[keys.NAME])
             os.makedirs(path, exist_ok = True)
-            Table.serialize(root_path,tablename)
+            Table(root_path,tablename).serialize()
 
 
