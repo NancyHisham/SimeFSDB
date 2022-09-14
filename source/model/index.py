@@ -1,11 +1,19 @@
+import os
+from output.exceptions import *
 from commands.keys import *
-import json
- 
-class Index: 
-    def index(path,tablename):
-        indices = {"indices": []}
-        for index in tablename[keys.IDX_KEY]:
-            name_value = {"name": index, "values": []}
-            indices["indices"].append(name_value)
-        with open(path, 'w') as file:
-            json.dump(indices, file) 
+
+
+class Index:
+    def __init__(self, name, table_metadata, path):
+        self.name = name
+        self.table_metadata = table_metadata
+        self.path = os.path.join(path, self.name)
+        self.__validate__(self)
+
+    @staticmethod
+    def __validate__(self):
+        if self.name not in self.table_metadata[keys.COLUMNS]:
+            raise WrongCommandError("Index {} not found".format(self.name))
+
+    def create(self):
+        os.makedirs(self.path, exist_ok=True)
