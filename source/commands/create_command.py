@@ -4,7 +4,7 @@ sys.path.append(parent_dir)
 from commands.abstract_command import AbstractCommand
 from commands.keys import *
 from output.exceptions import *
-from model.table import *
+from model.table_matadata import *
 from commands.keys import * 
  
 class CreateCommand(AbstractCommand):
