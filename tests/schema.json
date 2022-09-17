@@ -4,28 +4,30 @@
         {
             "name" : "Reservations",
             "columns" : ["First_name", "Last_name", "Gender", "Age", "Nationality", 
-            "Email", "PhoneNumber", "PassportId", "FlightId", "SeatNumber", "luggageWeight"],
+            "Email", "PhoneNumber", "PassportId", "FlightId", "SeatNumber", "luggageWeight", "ReservationId"],
             "primary_key"  : "ReservationId",
-            "Index_keys" : ["First_name", "Last_name"],
+            "Index_keys" : ["First_name", "Last_name", "Gender"],
             "Consistency" : "Eventual"
         },
         {
             "name" : "FlightInfo",
-            "columns" : ["PlaneId", "AirLineName", "From", "To", "DepartureTime", "ArrivalTime"],
+            "columns" : ["PlaneId", "AirLineName", "From", "To", "DepartureTime", "ArrivalTime", "FlightId"],
             "primary_key"  : "FlightId",
-            "Index_keys" : ["From", "to", "DepartureTime", "ArrivalTime"],
+            "Index_keys" : ["From", "To", "DepartureTime", "ArrivalTime"],
             "Consistency" : "Strong"
         },
         {
             "name" : "PlaneDetails",
-            "columns" : [ "SeatsDistribution", "OccupiedSeats"],
+            "columns" : [ "SeatsDistribution", "OccupiedSeats", "PlaneId", "last name"],
             "primary_key"  : "PlaneId",
+            "Index_keys" : ["last name"],
             "Consistency" : "Eventual"
         },
         {
             "name" : "FlightSeats",
-            "columns" : [ "ReservationId"],
+            "columns" : [ "ReservationId", "FlightId_SeatNumber", "Last_name"],
             "primary_key"  : "FlightId_SeatNumber",
+            "Index_keys" : ["Last_name"],
             "Consistency" : "Eventual"
         }
     

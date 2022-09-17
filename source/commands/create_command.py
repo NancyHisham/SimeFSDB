@@ -4,13 +4,14 @@ sys.path.append(parent_dir)
 from commands.abstract_command import AbstractCommand
 from commands.keys import *
 from output.exceptions import *
-
-
+from model.table_matadata import *
+from commands.keys import * 
+ 
 class CreateCommand(AbstractCommand):
 
     def __init__(self , schema_path):
         self.data = CreateCommand.__validate_and_get_schema(schema_path)  
-           
+
     @staticmethod
     def __validate_and_get_schema(schema_path):
         if (schema_path is None or schema_path == "" or schema_path == " "):
@@ -48,4 +49,7 @@ class CreateCommand(AbstractCommand):
         for tablename in self.data[keys.TABLES]:
             path = os.path.join(root_path, tablename[keys.NAME])
             os.makedirs(path, exist_ok = True)
+            table_metadata = TableMetadata(tablename, path)
+            table_metadata.serialize()
+
 
