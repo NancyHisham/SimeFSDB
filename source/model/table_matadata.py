@@ -24,6 +24,7 @@ class TableMetadata:
             index = Index(index, self.table_map, self.path)
             index.create()
 
+    @staticmethod
     def __validate__(self):
         if self.table_map[keys.PK] is None or self.table_map[keys.PK] not in self.table_map[keys.COLUMNS]:
             raise WrongCommandError("Primary_key {} is not found".format(keys.PK))
